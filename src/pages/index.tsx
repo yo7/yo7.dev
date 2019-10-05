@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+import { Image } from "../components/Image"
 import SEO from "../components/seo"
 import { css } from "@emotion/core"
 
@@ -18,7 +18,7 @@ const IndexPage = () => (
         margin-bottom: 1.45rem;
       `}
     >
-      <Image />
+      <Image file="gatsby-astronaut.png" />
     </div>
     <Link to="/page-2/">Go to page 2</Link>
   </Layout>
