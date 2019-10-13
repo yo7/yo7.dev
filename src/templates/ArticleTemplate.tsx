@@ -5,7 +5,6 @@ import SEO from "../components/seo"
 import { globalStyles } from "../styles/global"
 import { ArrowLeft, Share2 } from "react-feather"
 import { Image } from "../components/Image"
-import { checkPropTypes } from "prop-types"
 
 type Props = {
   data: {
@@ -21,7 +20,7 @@ type Props = {
 }
 
 export default ({ data }: Props) => {
-  const { markdownRemark } = data // data.markdownRemark holds our post data
+  const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
 
   return (
@@ -81,7 +80,7 @@ const Header: React.FC = () => {
     >
       <div
         css={css`
-          padding: 0.6rem 0.8rem;
+          padding: 1rem 0.8rem;
           display: flex;
           justify-content: space-between;
           max-width: 960px;
