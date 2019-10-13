@@ -7,7 +7,7 @@ type Props = {
   lang?: string
   meta?: any[]
   keywords?: string[]
-  title: string
+  title?: string
 }
 
 const SEO: React.FC<Props> = ({
@@ -38,11 +38,12 @@ const SEO: React.FC<Props> = ({
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={title || site.siteMetadata.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       link={[
         {
-          href: "https://fonts.googleapis.com/css?family=Roboto&display=swap",
+          href:
+            "https://fonts.googleapis.com/css?family=Roboto:500,700&display=swap",
           rel: "stylesheet",
         },
       ]}
