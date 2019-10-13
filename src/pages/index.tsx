@@ -1,27 +1,178 @@
 import * as React from "react"
-import { Link } from "gatsby"
-
-import Layout from "../components/layout"
+import SEO from "../components/SEO"
+import css from "@emotion/css"
+import { Global } from "@emotion/core"
+import { globalStyles } from "../styles/global"
 import { Image } from "../components/Image"
-import SEO from "../components/seo"
-import { css } from "@emotion/core"
+import { graphql, Link } from "gatsby"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div
-      css={css`
-        max-width: 300px;
-        margin-bottom: 1.45rem;
-      `}
-    >
-      <Image file="gatsby-astronaut.png" />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+type Post = {
+  path: string
+  title: string
+  date: Date
+  img: string
+}
 
-export default IndexPage
+type Props = {
+  data: {
+    allMarkdownRemark: {
+      edges: [
+        {
+          node: {
+            id: string
+            frontmatter: Post
+          }
+        }
+      ]
+    }
+  }
+}
+
+export default ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}: Props) => {
+  const posts = edges.map(edge => edge.node)
+
+  return (
+    <>
+      <Global styles={globalStyles} />
+      <SEO />
+      <div
+        css={css`
+          max-width: 640px;
+          margin: 0 auto;
+          padding: 0.5rem 1.5rem;
+        `}
+      >
+        <div
+          css={css`
+            margin-top: 3rem;
+          `}
+        >
+          <div>
+            <div
+              css={css`
+                height: 90px;
+                width: 90px;
+
+                @media (min-width: 640px) {
+                  height: 100px;
+                  width: 100px;
+                }
+                float: right;
+                shape-outside: circle(80%);
+
+                img {
+                  border-radius: 50%;
+                }
+              `}
+            >
+              <Image file="profile.png" />
+            </div>
+            <h1
+              css={css`
+                font-family: Roboto;
+                font-size: 2.2rem;
+                margin: 0;
+                letter-spacing: 0.5px;
+              `}
+            >
+              Seiya Yoshitaka
+            </h1>
+            <p
+              css={css`
+                line-height: 1.7;
+                color: #555;
+                margin-top: 1.2rem;
+              `}
+            >
+              Web開発者です。ツール系のアプリをつくるのが好きです。
+              主にモダンなWebアプリの開発について書きます。
+            </p>
+          </div>
+        </div>
+        <div
+          css={css`
+            margin-top: 4rem;
+          `}
+        >
+          <h2
+            css={css`
+              font-size: 1.8rem;
+            `}
+          >
+            Articles
+          </h2>
+          {posts.map(post => (
+            <PostLink key={post.id} post={post.frontmatter} />
+          ))}
+        </div>
+      </div>
+    </>
+  )
+}
+
+const PostLink: React.FC<{ post: Post }> = ({ post }) => {
+  return (
+    <Link to={`/${post.path}`}>
+      <div
+        css={css`
+          @media (min-width: 640px) {
+            max-width: calc(640px / 2);
+          }
+        `}
+      >
+        <Image
+          file={post.img}
+          css={css`
+            border-radius: 3px;
+          `}
+        />
+        <div
+          css={css`
+            margin-top: 0.5rem;
+          `}
+        >
+          <span
+            css={css`
+              font-size: 14px;
+              color: #999;
+            `}
+          >
+            {post.date}
+          </span>
+          <div
+            css={css`
+              margin-top: 0.2rem;
+              font-size: 1.2rem;
+              font-weight: 600;
+              color: #1a1a1a;
+            `}
+          >
+            {post.title}
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          id
+          frontmatter {
+            date(formatString: "YYYY-MM-DD")
+            path
+            title
+            img
+          }
+        }
+      }
+    }
+  }
+`

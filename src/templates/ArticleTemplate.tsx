@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
 import { Global, css } from "@emotion/core"
-import SEO from "../components/seo"
+import SEO from "../components/SEO"
 import { globalStyles } from "../styles/global"
 import { ArrowLeft, Share2 } from "react-feather"
 import { Image } from "../components/Image"
@@ -62,7 +62,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY-MM-DD")
         path
         title
         img
