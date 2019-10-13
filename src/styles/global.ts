@@ -42,8 +42,6 @@ export const globalStyles = css`
   }
   a {
     text-decoration: none;
-    color: #ff7373;
-    box-shadow: 0 1px 0 0 currentColor;
   }
   button {
     cursor: pointer;
