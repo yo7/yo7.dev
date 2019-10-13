@@ -47,6 +47,13 @@ const SEO: React.FC<Props> = ({
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      link={[
+        {
+          // @ts-ignore
+          href: "https://fonts.googleapis.com/css?family=Roboto&display=swap",
+          rel: "stylesheet",
+        },
+      ]}
       meta={[
         {
           name: `description`,
