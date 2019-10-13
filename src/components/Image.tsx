@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 type Props = {
   file: string
   alt?: string
+  className?: string
 }
 
 export const Image: React.FC<Props> = props => {
@@ -37,7 +38,9 @@ export const Image: React.FC<Props> = props => {
         }
 
         const imageSizes = image.node.childImageSharp.sizes
-        return <Img alt={props.alt} sizes={imageSizes} />
+        return (
+          <Img alt={props.alt} sizes={imageSizes} className={props.className} />
+        )
       }}
     />
   )

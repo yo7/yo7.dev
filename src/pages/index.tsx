@@ -4,8 +4,37 @@ import css from "@emotion/css"
 import { Global } from "@emotion/core"
 import { globalStyles } from "../styles/global"
 import { Image } from "../components/Image"
+import { graphql, Link } from "gatsby"
 
-export default () => {
+type Post = {
+  path: string
+  title: string
+  date: Date
+  img: string
+}
+
+type Props = {
+  data: {
+    allMarkdownRemark: {
+      edges: [
+        {
+          node: {
+            id: string
+            frontmatter: Post
+          }
+        }
+      ]
+    }
+  }
+}
+
+export default ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}: Props) => {
+  const posts = edges.map(edge => edge.node)
+
   return (
     <>
       <Global styles={globalStyles} />
@@ -60,7 +89,7 @@ export default () => {
               `}
             >
               Web開発者です。ツール系のアプリをつくるのが好きです。
-              主にモダンなWebアプリの開発について書いています。
+              主にモダンなWebアプリの開発について書きます。
             </p>
           </div>
         </div>
@@ -76,8 +105,74 @@ export default () => {
           >
             Articles
           </h2>
+          {posts.map(post => (
+            <PostLink key={post.id} post={post.frontmatter} />
+          ))}
         </div>
       </div>
     </>
   )
 }
+
+const PostLink: React.FC<{ post: Post }> = ({ post }) => {
+  return (
+    <Link to={`/${post.path}`}>
+      <div
+        css={css`
+          @media (min-width: 640px) {
+            max-width: calc(640px / 2);
+          }
+        `}
+      >
+        <Image
+          file={post.img}
+          css={css`
+            border-radius: 3px;
+          `}
+        />
+        <div
+          css={css`
+            margin-top: 0.5rem;
+          `}
+        >
+          <span
+            css={css`
+              font-size: 14px;
+              color: #999;
+            `}
+          >
+            {post.date}
+          </span>
+          <div
+            css={css`
+              margin-top: 0.2rem;
+              font-size: 1.2rem;
+              font-weight: 600;
+              color: #1a1a1a;
+            `}
+          >
+            {post.title}
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          id
+          frontmatter {
+            date(formatString: "YYYY-MM-DD")
+            path
+            title
+            img
+          }
+        }
+      }
+    }
+  }
+`
