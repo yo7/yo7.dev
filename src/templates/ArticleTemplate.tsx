@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Global, css } from "@emotion/core"
 import SEO from "../components/seo"
 import { globalStyles } from "../styles/global"
@@ -36,6 +36,10 @@ export default ({ data }: Props) => {
             max-width: 680px;
             margin: 0 auto;
             padding: 0.5rem 1rem;
+            a {
+              color: #ff7373;
+              box-shadow: 0 1px 0 0 currentColor;
+            }
 
             p {
               line-height: 1.5;
@@ -87,7 +91,9 @@ const Header: React.FC = () => {
           margin: 0 auto;
         `}
       >
-        <ArrowLeft color="#fff" size={30} />
+        <Link to="/">
+          <ArrowLeft color="#fff" size={30} />
+        </Link>
         <Share2 color="#fff" size={28} />
       </div>
     </div>
