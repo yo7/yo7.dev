@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import SEO from "../components/seo"
+import SEO from "../components/SEO"
 import { Global, css } from "@emotion/core"
 import { globalStyles } from "../styles/global"
 import { Link } from "gatsby"

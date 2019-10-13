@@ -3,7 +3,7 @@ import SEO from "../components/SEO"
 import css from "@emotion/css"
 import { Global } from "@emotion/core"
 import { globalStyles } from "../styles/global"
-import { Image } from "../components/image"
+import { Image } from "../components/Image"
 
 export default () => {
   return (
