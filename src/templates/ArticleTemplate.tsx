@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import { Global, css } from "@emotion/core"
 import SEO from "../components/SEO"
 import { globalStyles } from "../styles/global"
-import { ArrowLeft, Share2 } from "react-feather"
+import { ArrowLeft, Share2, Edit } from "react-feather"
 import { Image } from "../components/Image"
 
 type Props = {
@@ -26,32 +26,54 @@ export default ({ data }: Props) => {
   return (
     <>
       <Global styles={globalStyles} />
-      <SEO title="Page two" />
+      <SEO title={frontmatter.title} />
       <div>
         <Header />
         <Eyecatch title={frontmatter.title} img={frontmatter.img} />
         <div
-          dangerouslySetInnerHTML={{ __html: html }}
           css={css`
             max-width: 680px;
             margin: 0 auto;
             padding: 0.5rem 1rem;
-            a {
-              color: #ff7373;
-              box-shadow: 0 1px 0 0 currentColor;
-            }
-
-            p {
-              line-height: 1.5;
-            }
-
-            p > code,
-            li > code {
-              padding: 0.25rem 0.4rem 0.15rem;
-              border-radius: 3px;
-            }
           `}
-        />
+        >
+          <div
+            css={css`
+              color: #999;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            `}
+          >
+            <Edit
+              color="#999"
+              size={20}
+              css={css`
+                margin-right: 5px;
+              `}
+            />
+            {frontmatter.date}
+          </div>
+          <div
+            dangerouslySetInnerHTML={{ __html: html }}
+            css={css`
+              a {
+                color: #ff7373;
+                box-shadow: 0 1px 0 0 currentColor;
+              }
+
+              p {
+                line-height: 1.5;
+              }
+
+              p > code,
+              li > code {
+                padding: 0.25rem 0.4rem 0.15rem;
+                border-radius: 3px;
+              }
+            `}
+          />
+        </div>
       </div>
     </>
   )
