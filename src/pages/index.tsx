@@ -45,8 +45,9 @@ export default () => {
             <h1
               css={css`
                 font-family: Roboto;
-                font-size: 2rem;
+                font-size: 2.2rem;
                 margin: 0;
+                letter-spacing: 0.5px;
               `}
             >
               Seiya Yoshitaka
@@ -62,6 +63,19 @@ export default () => {
               主にモダンなWebアプリの開発について書いています。
             </p>
           </div>
+        </div>
+        <div
+          css={css`
+            margin-top: 4rem;
+          `}
+        >
+          <h2
+            css={css`
+              font-size: 1.8rem;
+            `}
+          >
+            Articles
+          </h2>
         </div>
       </div>
     </>
