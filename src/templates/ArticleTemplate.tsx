@@ -11,6 +11,7 @@ type Props = {
   data: {
     markdownRemark: {
       html: any
+      excerpt: string
       frontmatter: {
         title: string
         date: string
@@ -33,6 +34,7 @@ export default ({ data }: Props) => {
       <Global styles={globalStyles} />
       <SEO
         title={frontmatter.title}
+        description={markdownRemark.excerpt}
         image={frontmatter.img.childImageSharp.sizes.src}
       />
       <div>
@@ -93,6 +95,7 @@ export const pageQuery = graphql`
   query($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
+      excerpt(pruneLength: 120)
       frontmatter {
         date(formatString: "YYYY-MM-DD")
         path
