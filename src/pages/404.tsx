@@ -6,9 +6,6 @@ import { globalStyles } from "../styles/global"
 import { Link } from "gatsby"
 import { ArrowLeft } from "react-feather"
 
-// @ts-ignore
-import notfound from "./404.png"
-
 export default () => (
   <>
     <Global styles={globalStyles} />

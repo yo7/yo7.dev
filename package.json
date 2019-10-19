@@ -1,4 +1,8 @@
 {
+  "name": "yo7.dev",
+  "engines": {
+    "node": "10.x"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "babel-plugin-styled-components": "^1.10.0",
@@ -25,7 +29,7 @@
     "typescript": "^3.3.4000"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --verbose",
     "dev": "gatsby develop",
     "lint": "prettier --list-different src/**/*.{ts,tsx}",
     "lint:fix": "prettier --write src/**/*.{ts,tsx}",
