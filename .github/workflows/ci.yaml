@@ -1,0 +1,16 @@
+name: CI
+on: [pull_request]
+jobs:
+  test:
+    name: run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - run: |
+          npm ci
+          npm run test:type
+          npm run lint
