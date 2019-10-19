@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Seiya Yoshitaka`,
+    siteUrl: `https://yo7.dev`,
     description: `Personal site by Seiya Yoshitaka`,
     author: `@gatsbyjs`,
   },

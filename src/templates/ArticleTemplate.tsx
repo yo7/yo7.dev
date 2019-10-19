@@ -4,7 +4,8 @@ import { Global, css } from "@emotion/core"
 import SEO from "../components/SEO"
 import { globalStyles } from "../styles/global"
 import { ArrowLeft, Share2, Edit } from "react-feather"
-import { Image } from "../components/Image"
+import { ImageWithSizes } from "../components/ImageWithSizes"
+import { FluidObject } from "gatsby-image"
 
 type Props = {
   data: {
@@ -13,7 +14,11 @@ type Props = {
       frontmatter: {
         title: string
         date: string
-        img: string
+        img: {
+          childImageSharp: {
+            sizes: FluidObject
+          }
+        }
       }
     }
   }
@@ -26,10 +31,15 @@ export default ({ data }: Props) => {
   return (
     <>
       <Global styles={globalStyles} />
-      <SEO title={frontmatter.title} />
+      <SEO
+        title={frontmatter.title}
+        image={frontmatter.img.childImageSharp.sizes.src}
+      />
       <div>
         <Header />
-        <Eyecatch title={frontmatter.title} img={frontmatter.img} />
+        <Eyecatch title={frontmatter.title}>
+          <ImageWithSizes sizes={frontmatter.img.childImageSharp.sizes} />
+        </Eyecatch>
         <div
           css={css`
             max-width: 680px;
@@ -87,7 +97,13 @@ export const pageQuery = graphql`
         date(formatString: "YYYY-MM-DD")
         path
         title
-        img
+        img {
+          childImageSharp {
+            sizes(maxWidth: 1280) {
+              ...GatsbyImageSharpSizes
+            }
+          }
+        }
       }
     }
   }
@@ -122,7 +138,7 @@ const Header: React.FC = () => {
   )
 }
 
-export const Eyecatch: React.FC<{ title: string; img: string }> = props => {
+export const Eyecatch: React.FC<{ title: string }> = props => {
   return (
     <div
       css={css`
@@ -137,7 +153,7 @@ export const Eyecatch: React.FC<{ title: string; img: string }> = props => {
         }
       `}
     >
-      <Image file={props.img} />
+      {props.children}
       <div
         css={css`
           position: absolute;

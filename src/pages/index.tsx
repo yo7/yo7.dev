@@ -3,14 +3,20 @@ import SEO from "../components/SEO"
 import css from "@emotion/css"
 import { Global } from "@emotion/core"
 import { globalStyles } from "../styles/global"
-import { Image } from "../components/Image"
+import { ImageWithSizes } from "../components/ImageWithSizes"
 import { graphql, Link } from "gatsby"
+import { FluidObject } from "gatsby-image"
+import { Image } from "../components/Image"
 
 type Post = {
   path: string
   title: string
   date: Date
-  img: string
+  img: {
+    childImageSharp: {
+      sizes: FluidObject
+    }
+  }
 }
 
 type Props = {
@@ -124,8 +130,8 @@ const PostLink: React.FC<{ post: Post }> = ({ post }) => {
           }
         `}
       >
-        <Image
-          file={post.img}
+        <ImageWithSizes
+          sizes={post.img.childImageSharp.sizes}
           css={css`
             border-radius: 3px;
           `}
@@ -169,7 +175,13 @@ export const pageQuery = graphql`
             date(formatString: "YYYY-MM-DD")
             path
             title
-            img
+            img {
+              childImageSharp {
+                sizes(maxWidth: 1280) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
           }
         }
       }

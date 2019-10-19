@@ -8,6 +8,7 @@ type Props = {
   meta?: any[]
   keywords?: string[]
   title?: string
+  image?: string
 }
 
 const SEO: React.FC<Props> = ({
@@ -16,12 +17,14 @@ const SEO: React.FC<Props> = ({
   meta = [],
   keywords = [],
   title,
+  image,
 }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
+            siteUrl
             title
             description
             author
@@ -75,16 +78,20 @@ const SEO: React.FC<Props> = ({
           name: `twitter:title`,
           content: title,
         },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
       ]
         .concat(
           keywords.length > 0
             ? {
                 name: `keywords`,
                 content: keywords.join(`, `),
+              }
+            : []
+        )
+        .concat(
+          image
+            ? {
+                property: `og:image`,
+                content: `${site.siteMetadata.siteUrl}${image}`,
               }
             : []
         )
