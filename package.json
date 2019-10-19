@@ -1,4 +1,8 @@
 {
+  "name": "yo7.dev",
+  "engines": {
+    "node": "10.x"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "babel-plugin-styled-components": "^1.10.0",
