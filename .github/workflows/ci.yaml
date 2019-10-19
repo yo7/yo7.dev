@@ -11,6 +11,6 @@ jobs:
         with:
           node-version: 10.x
       - run: |
-          npm ci
-          npm run test:type
-          npm run lint
+          yarn install
+          yarn test:type
+          yarn run lint
