@@ -43,6 +43,13 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-150450094-1`,
+        head: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `seiya yoshitaka`,
@@ -52,12 +59,6 @@ module.exports = {
         theme_color: `#1a1a1a`,
         display: `minimal-ui`,
         icon: `images/icon.png`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-150450094-1",
       },
     },
     `gatsby-plugin-typescript`,
