@@ -86,6 +86,7 @@ export default ({ data }: Props) => {
               img {
                 max-width: 100%;
                 margin: 20px auto;
+                display: block;
               }
             `}
           />
