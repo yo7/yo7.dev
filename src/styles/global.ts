@@ -18,7 +18,7 @@ export const globalStyles = css`
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
+      "Segoe UI Symbol", Yu Gothic, YuGothic, Hiragino Sans, Noto Sans CJK JP;
   }
 
   ol,

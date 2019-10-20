@@ -1,20 +1,27 @@
-import * as React from "react"
+import { css, Global } from "@emotion/core"
 import { graphql, Link } from "gatsby"
-import { Global, css } from "@emotion/core"
-import SEO from "../components/SEO"
-import { globalStyles } from "../styles/global"
-import { ArrowLeft, Share2, Edit } from "react-feather"
-import { ImageWithSizes } from "../components/ImageWithSizes"
 import { FluidObject } from "gatsby-image"
+import * as React from "react"
+import { ArrowLeft, Edit, Share2 } from "react-feather"
+import { ImageWithSizes } from "../components/ImageWithSizes"
+import SEO from "../components/SEO"
+import { ShareData, ShareLink } from "../components/ShareLink"
+import { globalStyles } from "../styles/global"
 
 type Props = {
   data: {
+    site: {
+      siteMetadata: {
+        siteUrl: string
+      }
+    }
     markdownRemark: {
       html: any
       excerpt: string
       frontmatter: {
         title: string
         date: string
+        path: string
         img: {
           childImageSharp: {
             sizes: FluidObject
@@ -26,19 +33,24 @@ type Props = {
 }
 
 export default ({ data }: Props) => {
-  const { markdownRemark } = data
-  const { frontmatter, html } = markdownRemark
+  const { markdownRemark, site } = data
+  const { frontmatter, html, excerpt } = markdownRemark
 
   return (
     <>
       <Global styles={globalStyles} />
       <SEO
         title={frontmatter.title}
-        description={markdownRemark.excerpt}
+        description={excerpt}
         image={frontmatter.img.childImageSharp.sizes.src}
       />
       <div>
-        <Header />
+        <Header
+          shareData={{
+            url: `${site.siteMetadata.siteUrl}${frontmatter.path}`,
+            text: frontmatter.title,
+          }}
+        />
         <Eyecatch title={frontmatter.title}>
           <ImageWithSizes sizes={frontmatter.img.childImageSharp.sizes} />
         </Eyecatch>
@@ -55,6 +67,7 @@ export default ({ data }: Props) => {
               display: flex;
               justify-content: flex-end;
               align-items: center;
+              margin-top: 7px;
             `}
           >
             <Edit
@@ -70,18 +83,23 @@ export default ({ data }: Props) => {
             dangerouslySetInnerHTML={{ __html: html }}
             css={css`
               a {
-                color: #ff7373;
-                box-shadow: 0 1px 0 0 currentColor;
+                color: #411bd6;
               }
 
               p {
-                line-height: 1.5;
+                line-height: 1.55;
               }
 
               p > code,
               li > code {
                 padding: 0.25rem 0.4rem 0.15rem;
                 border-radius: 3px;
+              }
+
+              img {
+                max-width: 100%;
+                margin: 20px auto;
+                display: block;
               }
             `}
           />
@@ -93,6 +111,11 @@ export default ({ data }: Props) => {
 
 export const pageQuery = graphql`
   query($path: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       excerpt(pruneLength: 120)
@@ -112,7 +135,7 @@ export const pageQuery = graphql`
   }
 `
 
-const Header: React.FC = () => {
+const Header: React.FC<{ shareData: ShareData }> = ({ shareData }) => {
   return (
     <div
       css={css`
@@ -135,7 +158,9 @@ const Header: React.FC = () => {
         <Link to="/">
           <ArrowLeft color="#fff" size={30} />
         </Link>
-        <Share2 color="#fff" size={28} />
+        <ShareLink url={shareData.url} text={shareData.text}>
+          <Share2 color="#fff" size={28} />
+        </ShareLink>
       </div>
     </div>
   )
@@ -172,6 +197,7 @@ export const Eyecatch: React.FC<{ title: string }> = props => {
             color: #fff;
             margin: 1rem;
             line-height: 1.25;
+            font-weight: 700;
           `}
         >
           {props.title}
