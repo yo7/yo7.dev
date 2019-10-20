@@ -70,8 +70,7 @@ export default ({ data }: Props) => {
             dangerouslySetInnerHTML={{ __html: html }}
             css={css`
               a {
-                color: #ff7373;
-                box-shadow: 0 1px 0 0 currentColor;
+                color: #411bd6;
               }
 
               p {
@@ -82,6 +81,11 @@ export default ({ data }: Props) => {
               li > code {
                 padding: 0.25rem 0.4rem 0.15rem;
                 border-radius: 3px;
+              }
+
+              img {
+                max-width: 100%;
+                margin: 20px auto;
               }
             `}
           />
