@@ -9,13 +9,13 @@ img: "./images/dark-mode.png"
 
 ![Image from Gyazo](https://i.gyazo.com/40ecb6b1d38edabc26069cce34009777.gif)
 
-hackernote は React で開発している SPA なので、この記事では自分が React でダークモードを実装した方法を書き留めておます。
+hackernote は React で開発している SPA なので、この記事では自分が React でダークモードを実装した方法を書き留めておきます。
 
 ## ダークモードのトレンド
 
 最近は[Slack](https://slackhq.com/dark-mode-for-slack-desktop)など、有名なアプリが次々に実装してダークモードがトレンドになっている感があります。
 
-その背景には、2019 年 9 月 3 日にリリースされた[Android10](https://www.android.com/android-10/)、09 月 19 日にリリースされた[iOS13](https://www.apple.com/ios/ios-13/)で iPhone / iPad にそれぞれダークモードが導入されたことが大きいでしょう。
+その背景としては、2019 年 9 月 3 日にリリースされた[Android10](https://www.android.com/android-10/)、09 月 19 日にリリースされた[iOS13](https://www.apple.com/ios/ios-13/)で iPhone / iPad にそれぞれダークモードが導入されたことが大きいでしょう。
 
 2 つの OS のリリースを見ると、ダークモードの特徴・よさとして「スクリーンが目に優しくなること」「バッテリー消費が抑えられること」などが挙げられています。
 
@@ -36,7 +36,7 @@ Web においても、[prefers-color-scheme](https://developer.mozilla.org/en-US
 
 ### セットアップ
 
-ダークモードに切り替える対象として、背景色・テキスト色を設定した React コンポーネントを用意します（`baseStyle`はテーマに関係ないスタイルです）。スタイルは Emotion の[css prop](https://emotion.sh/docs/css-prop)で当てていきます。コードは生の JavaScript と大差ないですが TypeScript で書いています。
+ダークモードに切り替える対象として、背景色・テキスト色を設定した React コンポーネントを用意します（`baseStyle`はテーマには関係ない細かなスタイル定義です）。スタイルは Emotion の[css prop](https://emotion.sh/docs/css-prop)で当てていきます。コードは生の JavaScript と大差ないですが TypeScript で書いています。
 
 ```tsx
 import * as React from "react"
@@ -62,7 +62,7 @@ export const ThemeView: React.FC = () => {
 
 Emotion でテーマの切り替えするには、[emotion-theming](https://emotion.sh/docs/theming)というライブラリが便利です。
 
-アプリケーションのトップレベルの方を`ThemeProvider`コンポーネントで囲み、`css`prop のパラメータでテーマを渡すようにします。
+アプリケーションのトップレベルに近いコンポーネントを`ThemeProvider`で囲み、`css`prop にテーマをパラメータにとる関数渡すようにします。
 
 サンプルなので 1 ファイルに全て詰め込んでしまっていますが、コードが大きくなってファイルが増えてくると`css`prop から簡単に`theme`にアクセスできるのは便利です。
 
@@ -199,7 +199,7 @@ export const ThemeContext = createContext<ThemeContextType>(defaultContext)
 export const useTheme = () => useContext(ThemeContext)
 ```
 
-現在のテーマを受け取る・変更するコンポーネントはシンプルに`useTheme()` hook を使います。
+現在のテーマを受け取る・変更するコンポーネントはシンプルに`useTheme()` hook を使います（詳細なコードは割愛しますが気になる方は[Github リポジトリ](https://github.com/yo7/react-emotion-dark-mode-demo)を参照してください）。
 
 ```tsx
 const { mode, toggleTheme } = useTheme()

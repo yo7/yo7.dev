@@ -55,6 +55,7 @@ export default ({ data }: Props) => {
               display: flex;
               justify-content: flex-end;
               align-items: center;
+              margin-top: 7px;
             `}
           >
             <Edit
@@ -74,7 +75,7 @@ export default ({ data }: Props) => {
               }
 
               p {
-                line-height: 1.5;
+                line-height: 1.55;
               }
 
               p > code,
@@ -177,6 +178,7 @@ export const Eyecatch: React.FC<{ title: string }> = props => {
             color: #fff;
             margin: 1rem;
             line-height: 1.25;
+            font-weight: 700;
           `}
         >
           {props.title}
