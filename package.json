@@ -6,7 +6,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "babel-plugin-styled-components": "^1.10.0",
-    "gatsby": "^2.17.10",
+    "gatsby": "^2.17.17",
     "gatsby-image": "^2.2.32",
     "gatsby-plugin-emotion": "^4.1.14",
     "gatsby-plugin-google-analytics": "^2.1.26",
