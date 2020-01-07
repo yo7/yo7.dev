@@ -4,7 +4,7 @@
     "node": "10.x"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.22",
+    "@emotion/core": "^10.0.27",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.18.18",
     "gatsby-image": "^2.2.33",
