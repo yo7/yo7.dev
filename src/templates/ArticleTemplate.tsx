@@ -58,7 +58,7 @@ export default ({ data }: Props) => {
           css={css`
             max-width: 680px;
             margin: 0 auto;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
           `}
         >
           <div
