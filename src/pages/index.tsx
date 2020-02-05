@@ -49,12 +49,12 @@ export default ({
         css={css`
           max-width: 640px;
           margin: 0 auto;
-          padding: 0.5rem 1rem;
         `}
       >
         <div
           css={css`
             margin-top: 3rem;
+            padding: 0.5rem 1.5rem;
           `}
         >
           <div>
@@ -107,13 +107,34 @@ export default ({
           <h2
             css={css`
               font-size: 1.8rem;
+              padding: 0 1.5rem;
+              margin: 1rem 0;
             `}
           >
             Articles
           </h2>
-          {posts.map(post => (
-            <PostLink key={post.id} post={post.frontmatter} />
-          ))}
+          <div
+            css={css`
+              display: flex;
+              flex-direction: column;
+              @media (min-width: 640px) {
+                flex-direction: row;
+              }
+            `}
+          >
+            {posts.map(post => (
+              <div
+                key={post.id}
+                css={css`
+                  @media (min-width: 640px) {
+                    width: 50%;
+                  }
+                `}
+              >
+                <PostLink post={post.frontmatter} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
@@ -125,9 +146,7 @@ const PostLink: React.FC<{ post: Post }> = ({ post }) => {
     <Link to={`/${post.path}`}>
       <div
         css={css`
-          @media (min-width: 640px) {
-            max-width: calc(640px / 2);
-          }
+          padding: 1.5rem;
         `}
       >
         <ImageWithSizes
