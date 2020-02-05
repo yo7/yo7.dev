@@ -101,6 +101,12 @@ export default ({ data }: Props) => {
                 margin: 20px auto;
                 display: block;
               }
+
+              hr {
+                background-color: #ddd;
+                border-color: transparent;
+                margin: 30px auto;
+              }
             `}
           />
         </div>
