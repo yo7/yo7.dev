@@ -74,38 +74,38 @@ const ListPaneContainer = () => {
 
 「ノートの一覧を取得する」という処理はカスタムフックの中に閉じられており、コンポーネントはその詳細については気にせず返ってきたコールバックを実行するだけになります。
 
-### 例2. ボタンを押した際にノートをゴミ箱に移動する
+### 例2. ボタンを押した際にノートをアーカイブする
 
-ユーザーのインタラクションに応じて非同期処理を実行する、というのも典型的な例です。ボタンを押した際にノートをゴミ箱に移動する、という処理をみてみます（アプリのUI上は`アーカイブ`と呼んでいますが、実態を考えると`ゴミ箱`が正しいことに書いていて気づきました...😅）
+ユーザーのインタラクションに応じて非同期処理を実行する、というのも典型的な例です。ボタンを押した際にノートをアーカイブする、という処理をみてみます。
 
-![ノートを削除する](https://i.gyazo.com/eebd780b4a43e03c3dd32ec6afc643ab.gif)
+![ノートをアーカイブ](https://i.gyazo.com/eebd780b4a43e03c3dd32ec6afc643ab.gif)
 
 このカスタムフックでは、コールバック内で非同期の削除を実行、actionをdispatchして、さらにトップページへの遷移を実行しています（[hookrouter](https://github.com/Paratron/hookrouter)を使っています）。  
 ノート一覧の取得処理との違いとしては、削除対象のノートを知る必要があるため、パラメータとしてノートIDを渡し、`useCallback()`のdependencyリストにIDを追加しています（追加しないと意図せずコールバックがメモ化されてしまうため）。
 
 ```ts
-export const useDeleteNoteOperation = (id: string) => {
+export const useArchiveNoteOperation = (id: string) => {
   const worker = useWorkerProxy()
   const dispatch = useDispatch<Dispatch>()
 
-  const deleteNote = React.useCallback(async () => {
+  const archiveNote = React.useCallback(async () => {
     try {
-      await worker.deleteNote(id)
-      dispatch({ type: NotesActionTypes.DELETE_NOTE, payload: id })
+      await worker.archiveNote(id)
+      dispatch({ type: NotesActionTypes.ARCHIVE_NOTE, payload: id })
       navigate('/')
     } catch (e) {
       console.error(e)
     }
   }, [dispatch, id])
 
-  return { deleteNote }
+  return { archiveNote }
 }
 ```
 
-このカスタムフックもContainerで呼び出し、コールバックを下位のコンポーネントで`<i onClick={deleteNote} />`のようにイベントハンドラに渡します。
+このカスタムフックもContainerで呼び出し、コールバックを下位のコンポーネントで`<i onClick={archiveNote} />`のようにイベントハンドラに渡します。
 
 ```ts
-export const DeleteIconContainer = () => {
+export const ArchiveIconContainer = () => {
   const id = useSelector(focusedNoteIdSelector)
   const { archiveNote } = useArchiveNoteOperation(id)
 
@@ -142,7 +142,7 @@ export const DeleteIconContainer = () => {
 
 また、re-ducks固有の点でselector / operationという新しい登場人物を加えています。selectorはReduxを使ったことがある人ならお馴染みの、stateから必要なデータだけを取得するための関数です。operationsは、複数のactionを発火したり、非同期処理を含む複雑なインタラクションを実行するための関数です。  本来、operationにはreduxのミドルウェアを使うことが推奨されていますが、そこで代わりにReact Hooksを使っています。
 
-上のサンプルコードのようにノート一覧を取得する処理は`useGetAllNotesOperation`、削除する処理は`useDeleteNoteOperation`というようにoperationであるカスタムフックは`useXXXOperation`と命名しています。
+上のサンプルコードのようにノート一覧を取得する処理は`useGetAllNotesOperation`、削除する処理は`useArchiveNoteOperation`というようにoperationであるカスタムフックは`useXXXOperation`と命名しています。
 
 re-ducksではstateをコンポーネントから参照する際にはselectorを使い、stateを変更する手続きは直接Actionをdispatchするのではなくoperationを介して実行します。
 
