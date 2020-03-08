@@ -1,3 +1,5 @@
+import * as React from "react"
+
 export type ShareData = {
   url: string
   text?: string | null
