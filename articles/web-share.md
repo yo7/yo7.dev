@@ -41,7 +41,19 @@ TODO
 
 Web Share APIのサポートは一部に限られており、ほとんどのデスクトップの環境など利用できないため、サポートされていない環境でのフォールバックを考える必要があります。
 
-WIP
+Web Share APIがサポートされていない場合は`navigator.share`が`undefined`を返すので、これを使ってシェアしている場合とそうでない場合のロジックを分けることができます。
+
+このブログの実装では以下のように、APIがサポートされていない場合はTwitterでシェアするためのリンクを表示するようにしてみました。
+
+```jsx
+export const ShareLink = props => {
+  if (navigator.share) {
+    return <WebShareLink {...props} />
+  }
+
+  return <TwitterShareLink {...props} />
+}
+```
 
 ### おわり
 
