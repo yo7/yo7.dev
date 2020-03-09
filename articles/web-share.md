@@ -9,7 +9,19 @@ img: "./images/share.png"
 
 ### Web Share APIとは
 
-WIP
+Web Share APIは、ネイティブアプリと同じようにOSの機能を使ってシェアするためのAPIです。
+
+実際にこのウェブサイトでも、記事のページで右上のシェアボタンにWeb Share APIを使っています。
+
+シェアボタンを押すと、次のようにOSのシェアメニューが表示されます。
+
+<img src="https://i.gyazo.com/2d96f9f174183fdb95b877c1998012bb.png" alt="Image from Gyazo" width="300" />
+
+ユーザーは自分がインストールしているアプリをターゲットとしてシェアできるので、このAPIを使うことで利便性が高まるケースが少なくないと思います。
+
+### Web Share APIの使い方
+
+TODO
 
 ### ブラウザサポート
 
@@ -33,12 +45,13 @@ WIP
 
 ### おわり
 
-
+仕様が小さくてシンプルなAPIですが、かんたんに導入できて活用しやすいWeb Share APIについて書きました。
+[Web Share Target API](https://wicg.github.io/web-share-target/)という、ネイティブシェアのターゲットとしてウェブサイト（PWA）を利用するためのAPIもあるので、使ってみて何か発見などがあればそれについても書いてみたいと思います。
 
 ### 参考
 - [Web Share API - W3C](https://www.w3.org/TR/web-share/)
 - [Navigator.share() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
 - [Share like a native app with the Web Share API](https://web.dev/web-share/)
-- [The Web Share API <- Alligator.io]
+- [The Web Share API <- Alligator.io](https://alligator.io/js/web-share-api/)
 
 *Photo by Daria Nepriakhina on [Unsplash](https://unsplash.com/photos/guiQYiRxkZY)*
