@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Share2, Twitter } from "react-feather"
 
 export type ShareData = {
   url: string
@@ -12,22 +13,42 @@ type Navigator = {
 type Props = ShareData
 
 export const ShareLink: React.FC<Props> = props => {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if ((navigator as Navigator).share) {
-      e.preventDefault()
+  if ((navigator as Navigator).share) {
+    return <WebShareLink {...props} />
+  } else {
+    return <TwitterShareLink {...props} />
+  }
+}
 
-      return (navigator as Navigator).share!({
+const WebShareLink: React.FC<Props> = props => {
+  const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+
+    try {
+      await (navigator as Navigator).share!({
         text: props.text,
         url: props.url,
       })
-    } else {
-      return
+    } catch (e) {
+      console.error(e)
     }
   }
 
   return (
-    <a onClick={handleClick} href={twitterShareUrl(props.url, props.text)}>
-      {props.children}
+    <a onClick={handleClick}>
+      <Share2 color="#fff" size={28} />
+    </a>
+  )
+}
+
+const TwitterShareLink: React.FC<Props> = props => {
+  return (
+    <a
+      href={twitterShareUrl(props.url, props.text)}
+      target="_blank"
+      rel="noopener"
+    >
+      <Twitter color="#fff" size={28} />
     </a>
   )
 }
