@@ -13,7 +13,7 @@ type Navigator = {
 type Props = ShareData
 
 export const ShareLink: React.FC<Props> = props => {
-  if ((navigator as Navigator).share) {
+  if (typeof navigator !== "undefined" && (navigator as Navigator).share) {
     return <WebShareLink {...props} />
   } else {
     return <TwitterShareLink {...props} />
