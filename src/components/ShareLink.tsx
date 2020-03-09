@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Share2, Twitter } from "react-feather"
+import { css } from "@emotion/core"
 
 export type ShareData = {
   url: string
@@ -25,7 +26,7 @@ export const ShareLink: React.FC<Props> = props => {
 }
 
 const WebShareLink: React.FC<Props> = props => {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
 
     return (navigator as Navigator).share!({
@@ -35,9 +36,16 @@ const WebShareLink: React.FC<Props> = props => {
   }
 
   return (
-    <a onClick={handleClick}>
+    <div
+      onClick={handleClick}
+      css={css`
+        &:hover {
+          cursor: pointer;
+        }
+      `}
+    >
       <Share2 color="#fff" size={28} />
-    </a>
+    </div>
   )
 }
 
