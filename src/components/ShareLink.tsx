@@ -21,17 +21,13 @@ export const ShareLink: React.FC<Props> = props => {
 }
 
 const WebShareLink: React.FC<Props> = props => {
-  const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
 
-    try {
-      await (navigator as Navigator).share!({
-        text: props.text,
-        url: props.url,
-      })
-    } catch (e) {
-      console.error(e)
-    }
+    return (navigator as Navigator).share!({
+      text: props.text,
+      url: props.url,
+    }).catch(e => console.error(e))
   }
 
   return (
