@@ -5548,7 +5548,7 @@ gatsby-cli@^2.10.4:
     ink "^2.6.0"
     ink-spinner "^3.0.1"
 
-gatsby-core-utils@^1.0.30, gatsby-core-utils@^1.0.31:
+gatsby-core-utils@^1.0.31:
   version "1.0.31"
   resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.0.31.tgz#f0a3c37c46a0429f5ce10fee0c01a60718a36216"
   integrity sha512-QvyAaC2nK+34giEPn2eMMkruvzyz4cD3+68RFV9A71HDuLU7FTgnhahyV8QmqZdjK2zVnhEIs2rGuf4weEuu1g==
@@ -5804,10 +5804,10 @@ gatsby-transformer-sharp@^2.3.17:
     semver "^5.7.1"
     sharp "^0.23.4"
 
-gatsby@^2.19.34:
-  version "2.19.34"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.34.tgz#31c013da278c39e7261af610c04ef15960a5e014"
-  integrity sha512-HRHTaHxSnfpCTeh6ZFuX6mbQsyK50kWr7GSD+TWqSdDvcFPXe9tZE71U82gfyMIbB0VkVxxX60HFjYhHW0LMFw==
+gatsby@^2.19.35:
+  version "2.19.35"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.35.tgz#728a1fb2a1beae9fbc49490a5c60b503880da49a"
+  integrity sha512-Lwc6Mx/IvYVKNxgi5DXHf1lWdoC1+AULYlW0lIxL1JKNh8sJkYQBWd6T4ophJAC5o6YYAbrq07ah1NlGuipvig==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.5"
