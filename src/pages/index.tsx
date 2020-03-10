@@ -117,8 +117,10 @@ export default ({
             css={css`
               display: flex;
               flex-direction: column;
+
               @media (min-width: 640px) {
                 flex-direction: row;
+                flex-wrap: wrap;
               }
             `}
           >
@@ -127,7 +129,7 @@ export default ({
                 key={post.id}
                 css={css`
                   @media (min-width: 640px) {
-                    width: 50%;
+                    max-width: 50%;
                   }
                 `}
               >

@@ -2,7 +2,7 @@ import { css, Global } from "@emotion/core"
 import { graphql, Link } from "gatsby"
 import { FluidObject } from "gatsby-image"
 import * as React from "react"
-import { ArrowLeft, Edit, Share2 } from "react-feather"
+import { ArrowLeft, Edit } from "react-feather"
 import { ImageWithSizes } from "../components/ImageWithSizes"
 import SEO from "../components/SEO"
 import { ShareData, ShareLink } from "../components/ShareLink"
@@ -98,7 +98,7 @@ export default ({ data }: Props) => {
 
               img {
                 max-width: 100%;
-                margin: 20px auto;
+                margin: 35px auto;
                 display: block;
               }
 
@@ -164,9 +164,7 @@ const Header: React.FC<{ shareData: ShareData }> = ({ shareData }) => {
         <Link to="/">
           <ArrowLeft color="#fff" size={30} />
         </Link>
-        <ShareLink url={shareData.url} text={shareData.text}>
-          <Share2 color="#fff" size={28} />
-        </ShareLink>
+        <ShareLink {...shareData} />
       </div>
     </div>
   )
