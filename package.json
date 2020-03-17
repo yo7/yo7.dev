@@ -18,7 +18,7 @@
     "gatsby-remark-external-links": "0.0.4",
     "gatsby-remark-prismjs": "^3.3.36",
     "gatsby-source-filesystem": "^2.1.54",
-    "gatsby-transformer-remark": "^2.6.58",
+    "gatsby-transformer-remark": "^2.6.59",
     "gatsby-transformer-sharp": "^2.3.18",
     "prismjs": "^1.19.0",
     "react": "^16.13.0",
