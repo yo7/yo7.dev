@@ -7,6 +7,6 @@ type Props = {
   className?: string
 }
 
-export const ImageWithSizes: React.FC<Props> = props => {
+export const ImageWithSizes: React.FC<Props> = (props) => {
   return <Img alt={props.alt} sizes={props.sizes} className={props.className} />
 }

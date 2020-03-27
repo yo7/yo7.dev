@@ -39,7 +39,7 @@ export default ({
     allMarkdownRemark: { edges },
   },
 }: Props) => {
-  const posts = edges.map(edge => edge.node)
+  const posts = edges.map((edge) => edge.node)
 
   return (
     <>
@@ -124,7 +124,7 @@ export default ({
               }
             `}
           >
-            {posts.map(post => (
+            {posts.map((post) => (
               <div
                 key={post.id}
                 css={css`
