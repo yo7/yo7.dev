@@ -170,7 +170,7 @@ const Header: React.FC<{ shareData: ShareData }> = ({ shareData }) => {
   )
 }
 
-export const Eyecatch: React.FC<{ title: string }> = props => {
+export const Eyecatch: React.FC<{ title: string }> = (props) => {
   return (
     <div
       css={css`

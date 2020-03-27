@@ -13,7 +13,7 @@ type Navigator = {
 
 type Props = ShareData
 
-export const ShareLink: React.FC<Props> = props => {
+export const ShareLink: React.FC<Props> = (props) => {
   if (typeof navigator === "undefined") {
     return null
   }
@@ -25,14 +25,14 @@ export const ShareLink: React.FC<Props> = props => {
   return <TwitterShareLink {...props} />
 }
 
-const WebShareLink: React.FC<Props> = props => {
+const WebShareLink: React.FC<Props> = (props) => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
 
     return (navigator as Navigator).share!({
       text: props.text,
       url: props.url,
-    }).catch(e => console.error(e))
+    }).catch((e) => console.error(e))
   }
 
   return (
@@ -49,7 +49,7 @@ const WebShareLink: React.FC<Props> = props => {
   )
 }
 
-const TwitterShareLink: React.FC<Props> = props => {
+const TwitterShareLink: React.FC<Props> = (props) => {
   return (
     <a
       href={twitterShareUrl(props.url, props.text)}

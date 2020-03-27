@@ -8,7 +8,7 @@ type Props = {
   className?: string
 }
 
-export const Image: React.FC<Props> = props => {
+export const Image: React.FC<Props> = (props) => {
   return (
     <StaticQuery
       query={graphql`
@@ -28,7 +28,7 @@ export const Image: React.FC<Props> = props => {
           }
         }
       `}
-      render={data => {
+      render={(data) => {
         const image = data.images.edges.find((edge: any) => {
           return edge.node.relativePath.includes(props.file)
         })
