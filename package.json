@@ -16,7 +16,7 @@
     "gatsby-plugin-sharp": "^2.6.0",
     "gatsby-plugin-typescript": "^2.4.0",
     "gatsby-remark-external-links": "0.0.4",
-    "gatsby-remark-prismjs": "^3.4.4",
+    "gatsby-remark-prismjs": "^3.5.0",
     "gatsby-source-filesystem": "^2.3.0",
     "gatsby-transformer-remark": "^2.8.0",
     "gatsby-transformer-sharp": "^2.5.0",
