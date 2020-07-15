@@ -619,15 +619,7 @@
     "@babel/helper-plugin-utils" "^7.10.4"
     "@babel/plugin-syntax-json-strings" "^7.8.0"
 
-"@babel/plugin-proposal-nullish-coalescing-operator@^7.10.1":
-  version "7.10.1"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-nullish-coalescing-operator/-/plugin-proposal-nullish-coalescing-operator-7.10.1.tgz#02dca21673842ff2fe763ac253777f235e9bbf78"
-  integrity sha512-56cI/uHYgL2C8HVuHOuvVowihhX0sxb3nnfVRzUeVHTWmRHTZrKuAh/OBIMggGU/S1g/1D2CRCXqP+3u7vX7iA==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.10.1"
-    "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.0"
-
-"@babel/plugin-proposal-nullish-coalescing-operator@^7.10.4":
+"@babel/plugin-proposal-nullish-coalescing-operator@^7.10.1", "@babel/plugin-proposal-nullish-coalescing-operator@^7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-nullish-coalescing-operator/-/plugin-proposal-nullish-coalescing-operator-7.10.4.tgz#02a7e961fc32e6d5b2db0649e01bf80ddee7e04a"
   integrity sha512-wq5n1M3ZUlHl9sqT2ok1T2/MTt6AXE0e1Lz4WzWBr95LsAZ5qDXe4KnFuauYyEyLiohvXFMdbsOTMyLZs91Zlw==
@@ -635,15 +627,7 @@
     "@babel/helper-plugin-utils" "^7.10.4"
     "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.0"
 
-"@babel/plugin-proposal-numeric-separator@^7.10.1":
-  version "7.10.1"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-numeric-separator/-/plugin-proposal-numeric-separator-7.10.1.tgz#a9a38bc34f78bdfd981e791c27c6fdcec478c123"
-  integrity sha512-jjfym4N9HtCiNfyyLAVD8WqPYeHUrw4ihxuAynWj6zzp2gf9Ey2f7ImhFm6ikB3CLf5Z/zmcJDri6B4+9j9RsA==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.10.1"
-    "@babel/plugin-syntax-numeric-separator" "^7.10.1"
-
-"@babel/plugin-proposal-numeric-separator@^7.10.4":
+"@babel/plugin-proposal-numeric-separator@^7.10.1", "@babel/plugin-proposal-numeric-separator@^7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-numeric-separator/-/plugin-proposal-numeric-separator-7.10.4.tgz#ce1590ff0a65ad12970a609d78855e9a4c1aef06"
   integrity sha512-73/G7QoRoeNkLZFxsoCCvlg4ezE4eM+57PnOqgaPOozd5myfj7p0muD1mRVJvbUWbOzD+q3No2bWbaKy+DJ8DA==
@@ -677,15 +661,7 @@
     "@babel/helper-plugin-utils" "^7.10.4"
     "@babel/plugin-syntax-optional-catch-binding" "^7.8.0"
 
-"@babel/plugin-proposal-optional-chaining@^7.10.3":
-  version "7.10.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.10.3.tgz#9a726f94622b653c0a3a7a59cdce94730f526f7c"
-  integrity sha512-yyG3n9dJ1vZ6v5sfmIlMMZ8azQoqx/5/nZTSWX1td6L1H1bsjzA8TInDChpafCZiJkeOFzp/PtrfigAQXxI1Ng==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.10.3"
-    "@babel/plugin-syntax-optional-chaining" "^7.8.0"
-
-"@babel/plugin-proposal-optional-chaining@^7.10.4":
+"@babel/plugin-proposal-optional-chaining@^7.10.3", "@babel/plugin-proposal-optional-chaining@^7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.10.4.tgz#750f1255e930a1f82d8cdde45031f81a0d0adff7"
   integrity sha512-ZIhQIEeavTgouyMSdZRap4VPPHqJJ3NEs2cuHs5p0erH+iz6khB0qfgU8g7UuJkG88+fBMy23ZiU+nuHvekJeQ==
@@ -779,13 +755,6 @@
   integrity sha512-aSff4zPII1u2QD7y+F8oDsz19ew4IGEJg9SVW+bqwpwtfFleiQDMdzA/R+UlWDzfnHFCxxleFT0PMIrR36XLNQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
-
-"@babel/plugin-syntax-numeric-separator@^7.10.1":
-  version "7.10.1"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-numeric-separator/-/plugin-syntax-numeric-separator-7.10.1.tgz#25761ee7410bc8cf97327ba741ee94e4a61b7d99"
-  integrity sha512-uTd0OsHrpe3tH5gRPTxG8Voh99/WCU78vIm5NMRYPAqC8lR4vajt6KkCAknCHrx24vkPdd/05yfdGSB4EIY2mg==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.10.1"
 
 "@babel/plugin-syntax-numeric-separator@^7.10.4":
   version "7.10.4"
@@ -6724,7 +6693,7 @@ gatsby-plugin-sharp@^2.6.17:
     svgo "1.3.2"
     uuid "^3.4.0"
 
-gatsby-plugin-typescript@^2.4.14, gatsby-plugin-typescript@^2.4.8:
+gatsby-plugin-typescript@^2.4.14:
   version "2.4.14"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.4.14.tgz#2687f404cba7d9034112d37a88b053ab87bf853e"
   integrity sha512-8lMEK+F+xQZ+SGUuj4GMuWk2vy6x5PBVPRLO3eKNEGpX9o+vJcyQxTtu9Nd1GToLjr1K1r0ak0hERwGNzaJLow==
