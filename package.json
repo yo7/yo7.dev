@@ -30,7 +30,7 @@
     "@types/react": "^16.9.43",
     "@types/react-helmet": "^6.0.0",
     "prettier": "^2.0.5",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "build": "gatsby build --verbose",
