@@ -19,7 +19,7 @@ export const Image: React.FC<Props> = (props) => {
                 relativePath
                 name
                 childImageSharp {
-                  sizes(maxWidth: 1280) {
+                  fluid(maxWidth: 1280) {
                     ...GatsbyImageSharpSizes
                   }
                 }
@@ -37,9 +37,12 @@ export const Image: React.FC<Props> = (props) => {
           return null
         }
 
-        const imageSizes = image.node.childImageSharp.sizes
         return (
-          <Img alt={props.alt} sizes={imageSizes} className={props.className} />
+          <Img
+            fluid={image.node.childImageSharp.fluid}
+            alt={props.alt}
+            className={props.className}
+          />
         )
       }}
     />
