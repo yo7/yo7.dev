@@ -145,7 +145,7 @@ export default ({
 
 const PostLink: React.FC<{ post: Post }> = ({ post }) => {
   return (
-    <Link to={`/${post.path}`}>
+    <Link to={`${post.path}`}>
       <div
         css={css`
           padding: 1.5rem;
