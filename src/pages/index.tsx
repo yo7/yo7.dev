@@ -6,7 +6,6 @@ import { globalStyles } from "../styles/global"
 import { ImageWithSizes } from "../components/ImageWithSizes"
 import { graphql, Link } from "gatsby"
 import { FluidObject } from "gatsby-image"
-import { Image } from "../components/Image"
 
 type Post = {
   path: string
