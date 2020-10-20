@@ -52,7 +52,7 @@ export default ({ data }: Props) => {
           }}
         />
         <Eyecatch title={frontmatter.title}>
-          <ImageWithSizes sizes={frontmatter.img.childImageSharp.sizes} />
+          <ImageWithSizes fluid={frontmatter.img.childImageSharp.sizes} />
         </Eyecatch>
         <div
           css={css`

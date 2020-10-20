@@ -20,7 +20,7 @@ export const Image: React.FC<Props> = (props) => {
                 name
                 childImageSharp {
                   fluid(maxWidth: 1280) {
-                    ...GatsbyImageSharpSizes
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }

@@ -13,7 +13,7 @@ type Post = {
   date: Date
   img: {
     childImageSharp: {
-      sizes: FluidObject
+      fluid: FluidObject
     }
   }
 }
@@ -123,7 +123,7 @@ const PostLink: React.FC<{ post: Post }> = ({ post }) => {
         `}
       >
         <ImageWithSizes
-          sizes={post.img.childImageSharp.sizes}
+          fluid={post.img.childImageSharp.fluid}
           css={css`
             border-radius: 3px;
           `}
@@ -169,8 +169,8 @@ export const pageQuery = graphql`
             title
             img {
               childImageSharp {
-                sizes(maxWidth: 1280) {
-                  ...GatsbyImageSharpSizes
+                fluid(maxWidth: 1280) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
