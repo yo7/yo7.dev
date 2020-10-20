@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Seiya Yoshitaka`,
+    title: `yo7.dev`,
     siteUrl: `https://yo7.dev`,
-    description: `Personal site by Seiya Yoshitaka`,
-    author: `@gatsbyjs`,
+    description: `Personal site on web development`,
+    author: `yo7`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -53,7 +53,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `seiya yoshitaka`,
+        name: `@yo7`,
         short_name: `sy`,
         start_url: `/`,
         background_color: `#1a1a1a`,
