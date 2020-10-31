@@ -1,8 +1,7 @@
 ---
-path: "/articles/react-emotion-darkmode"
 date: "2019-10-21"
 title: "ReactとEmotionでダークモードを実現する"
-img: "./images/dark-mode.png"
+img: dark-mode.png
 ---
 
 最近、[hackernote](https://app.hackernote.io)という Web で使えるマークダウンノートのアプリをつくっていて、ダークモードを実装しました。

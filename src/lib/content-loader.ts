@@ -1,30 +1,43 @@
 import path from "path"
 import fs from "fs"
 import pkgDir from "pkg-dir"
+import matter from "gray-matter"
+import remark from "remark"
+import html from "remark-html"
 
 export type Article = {
-  slug: string
   date: string
   title: string
   content: string
   img: string
 }
 
-export const getArticleFiles = () => {
+const EXT = ".md"
+
+const articlesDir = () => {
   const dir = pkgDir.sync() ?? process.cwd()
-  const articlesDir = path.join(dir, "articles")
+  return path.join(dir, "articles")
+}
+
+export const getArticleFiles = () => {
   const fileNames = fs
-    .readdirSync(articlesDir)
-    .filter((file) => path.parse(file).ext === ".md")
+    .readdirSync(articlesDir())
+    .filter((file) => path.parse(file).ext === EXT)
   return fileNames
 }
 
-// export const readArticleFile = (slug: string): Article => {
-//   return {
-//     slug,
-//     date,
-//     title,
-//     content,
-//     img,
-//   }
-// }
+export const readArticleFile = async (slug: string): Promise<Article> => {
+  const fileContent = fs.readFileSync(path.join(articlesDir(), `${slug}${EXT}`))
+  const matterParsed = matter(fileContent)
+  const { date, title, img } = matterParsed.data
+  const parsedContent = await remark()
+    .use(html as any)
+    .process(matterParsed.content)
+
+  return {
+    date,
+    title,
+    content: parsedContent.toString(),
+    img,
+  }
+}

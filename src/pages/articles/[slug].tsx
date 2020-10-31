@@ -1,9 +1,13 @@
 import path from "path"
 import { css } from "@emotion/core"
-import { GetStaticPaths, NextPage } from "next"
+import { GetStaticProps, NextPage } from "next"
 import { Edit } from "react-feather"
 import { Eyecatch } from "../../components/articles/Eyecatch"
-import { Article, getArticleFiles } from "../../lib/content-loader"
+import {
+  Article,
+  getArticleFiles,
+  readArticleFile,
+} from "../../lib/content-loader"
 
 type Props = {
   article: Article
@@ -12,8 +16,10 @@ type Props = {
 const ArticlePage: NextPage<Props> = (props) => {
   return (
     <div>
-      <Eyecatch title={props.article.title} src={props.article.img} />
-
+      <Eyecatch
+        title={props.article.title}
+        src={`/images/articles/${props.article.img}`}
+      />
       <div
         css={css`
           max-width: 680px;
@@ -86,16 +92,10 @@ export const getStaticPaths = () => {
   }
 }
 
-export const getStaticProps = async () => {
-  // const slug = ctx.params?.slug as string
-  const content = {
-    slug: "hoge",
-    date: "2020-01-01",
-    title: "hoge",
-    content: "hoge",
-    img: "/images/articles/share.png",
-  }
-  return { props: { article: content } }
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const slug = ctx.params?.slug as string
+  const article = await readArticleFile(slug)
+  return { props: { article } }
 }
 
 export default ArticlePage
