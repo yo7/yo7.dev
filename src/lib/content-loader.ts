@@ -4,6 +4,8 @@ import pkgDir from "pkg-dir"
 import matter from "gray-matter"
 import remark from "remark"
 import html from "remark-html"
+// @ts-ignore
+import prism from "remark-prism"
 
 export type Article = {
   date: string
@@ -30,14 +32,20 @@ export const readArticleFile = async (slug: string): Promise<Article> => {
   const fileContent = fs.readFileSync(path.join(articlesDir(), `${slug}${EXT}`))
   const matterParsed = matter(fileContent)
   const { date, title, img } = matterParsed.data
-  const parsedContent = await remark()
-    .use(html as any)
-    .process(matterParsed.content)
+  const content = await markdownToHtml(matterParsed.content)
 
   return {
     date,
     title,
-    content: parsedContent.toString(),
+    content,
     img,
   }
+}
+
+const markdownToHtml = async (markdown: string) => {
+  const result = await remark()
+    .use(html as any)
+    .use(prism)
+    .process(markdown)
+  return result.toString()
 }

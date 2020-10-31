@@ -27,12 +27,10 @@ export const Eyecatch: React.FC<Props> = (props) => {
           <Image
             src={props.src}
             alt={props.title}
-            height={670}
-            width={1280}
+            unsized
             css={css`
               position: absolute;
               width: 100%;
-
               max-height: 250px;
               object-fit: cover;
               object-position: center center;

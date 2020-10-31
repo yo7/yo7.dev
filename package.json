@@ -30,7 +30,8 @@
     "react-feather": "^2.0.8",
     "react-helmet": "^6.1.0",
     "remark": "^13.0.0",
-    "remark-html": "^13.0.1"
+    "remark-html": "^13.0.1",
+    "remark-prism": "^1.1.17"
   },
   "devDependencies": {
     "@types/pkg-dir": "^2.0.1",

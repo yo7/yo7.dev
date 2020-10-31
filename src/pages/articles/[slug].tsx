@@ -8,6 +8,7 @@ import {
   getArticleFiles,
   readArticleFile,
 } from "../../lib/content-loader"
+import "prismjs/themes/prism.css"
 
 type Props = {
   article: Article
@@ -56,7 +57,7 @@ const ArticlePage: NextPage<Props> = (props) => {
               line-height: 1.55;
             }
 
-            p > code,
+            pre > code,
             li > code {
               padding: 0.25rem 0.4rem 0.15rem;
               border-radius: 3px;
