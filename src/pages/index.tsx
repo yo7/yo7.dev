@@ -81,45 +81,47 @@ const IndexPage: NextPage<Props> = (props) => {
 
 const ArticleLink: React.FC<{ article: Article }> = (props) => {
   return (
-    <Link href={`/articles/${props.article.slug}`}>
-      <div
-        css={css`
-          padding: 1.5rem;
-        `}
-      >
-        <Image
-          src={`/images/articles/${props.article.img}`}
-          width={640}
-          height={335}
-          css={css`
-            border-radius: 3px;
-          `}
-        />
+    <Link href={`/articles/${props.article.slug}`} passHref>
+      <a>
         <div
           css={css`
-            margin-top: 0.5rem;
+            padding: 1.5rem;
           `}
         >
-          <span
+          <Image
+            src={`/images/articles/${props.article.img}`}
+            width={640}
+            height={335}
             css={css`
-              font-size: 14px;
-              color: #999;
+              border-radius: 3px;
             `}
-          >
-            {props.article.date}
-          </span>
+          />
           <div
             css={css`
-              margin-top: 0.2rem;
-              font-size: 1.2rem;
-              font-weight: 600;
-              color: #1a1a1a;
+              margin-top: 0.5rem;
             `}
           >
-            {props.article.title}
+            <span
+              css={css`
+                font-size: 14px;
+                color: #999;
+              `}
+            >
+              {props.article.date}
+            </span>
+            <div
+              css={css`
+                margin-top: 0.2rem;
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: #1a1a1a;
+              `}
+            >
+              {props.article.title}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
     </Link>
   )
 }

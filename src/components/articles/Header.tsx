@@ -30,8 +30,10 @@ export const Header: React.FC<Props> = (props) => {
           margin: 0 auto;
         `}
       >
-        <Link href="/">
-          <ArrowLeft color="#fff" size={30} />
+        <Link href="/" passHref>
+          <a>
+            <ArrowLeft color="#fff" size={30} />
+          </a>
         </Link>
         <ShareLink {...props.shareData} />
       </div>
