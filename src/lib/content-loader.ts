@@ -8,6 +8,7 @@ import html from "remark-html"
 import prism from "remark-prism"
 
 export type Article = {
+  slug: string
   date: string
   title: string
   content: string
@@ -28,6 +29,15 @@ export const getArticleFiles = () => {
   return fileNames
 }
 
+export const readArticleFiles = async () => {
+  const fileNames = getArticleFiles()
+  const promises = fileNames
+    .map((fileName) => path.parse(fileName).name)
+    .map((name) => readArticleFile(name))
+  const articles = await Promise.all(promises)
+  return articles
+}
+
 export const readArticleFile = async (slug: string): Promise<Article> => {
   const fileContent = fs.readFileSync(path.join(articlesDir(), `${slug}${EXT}`))
   const matterParsed = matter(fileContent)
@@ -35,6 +45,7 @@ export const readArticleFile = async (slug: string): Promise<Article> => {
   const content = await markdownToHtml(matterParsed.content)
 
   return {
+    slug,
     date,
     title,
     content,

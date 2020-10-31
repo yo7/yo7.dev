@@ -1,6 +1,14 @@
 import css from "@emotion/css"
+import { GetStaticProps, NextPage } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import { Article, readArticleFiles } from "../lib/content-loader"
 
-const IndexPage = () => {
+type Props = {
+  articles: Article[]
+}
+
+const IndexPage: NextPage<Props> = (props) => {
   return (
     <div
       css={css`
@@ -52,10 +60,73 @@ const IndexPage = () => {
               flex-wrap: wrap;
             }
           `}
-        ></div>
+        >
+          {props.articles.map((article, i) => (
+            <div
+              key={i}
+              css={css`
+                @media (min-width: 640px) {
+                  max-width: 50%;
+                }
+              `}
+            >
+              <ArticleLink article={article} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
+}
+
+const ArticleLink: React.FC<{ article: Article }> = (props) => {
+  return (
+    <Link href={`/articles/${props.article.slug}`}>
+      <div
+        css={css`
+          padding: 1.5rem;
+        `}
+      >
+        <Image
+          src={`/images/articles/${props.article.img}`}
+          width={640}
+          height={335}
+          css={css`
+            border-radius: 3px;
+          `}
+        />
+        <div
+          css={css`
+            margin-top: 0.5rem;
+          `}
+        >
+          <span
+            css={css`
+              font-size: 14px;
+              color: #999;
+            `}
+          >
+            {props.article.date}
+          </span>
+          <div
+            css={css`
+              margin-top: 0.2rem;
+              font-size: 1.2rem;
+              font-weight: 600;
+              color: #1a1a1a;
+            `}
+          >
+            {props.article.title}
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const articles = await readArticleFiles()
+  return { props: { articles } }
 }
 
 export default IndexPage
