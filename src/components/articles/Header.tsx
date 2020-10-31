@@ -1,7 +1,7 @@
 import { css } from "@emotion/core"
 import Link from "next/link"
 import { ArrowLeft } from "react-feather"
-import { ShareLink } from "../ShareLink"
+import { ShareLink } from "./ShareLink"
 
 type Props = {
   shareData: ShareData
