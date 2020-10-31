@@ -6,7 +6,10 @@ type Navigator = {
   share?: (data?: ShareData) => Promise<void>
 }
 
-type Props = ShareData
+type Props = {
+  url: string
+  text: string
+}
 
 export const ShareLink: React.FC<Props> = (props) => {
   if (typeof navigator === "undefined") {

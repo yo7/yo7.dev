@@ -16,6 +16,7 @@ export default class CustomDocument extends Document {
             content="Personal website on web development"
           />
           <meta name="twitter:card" content="summary" />
+          <link rel="shortcut icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:500,700&display=swap"
