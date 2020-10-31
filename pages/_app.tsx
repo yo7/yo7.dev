@@ -1,15 +1,18 @@
-import {Global} from "@emotion/core"
-import {AppProps} from "next/app"
-import {globalStyles} from "../src/styles/global"
+import { Global } from "@emotion/core"
+import { AppProps } from "next/app"
+import Head from "next/head"
+import { globalStyles } from "../src/styles/global"
 
-const App = ({Component, pageProps}: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
+      <Head>
+        <title>yo7.dev</title>
+      </Head>
       <Global styles={globalStyles} />
       <Component {...pageProps} />
     </>
   )
-
 }
 
 export default App
