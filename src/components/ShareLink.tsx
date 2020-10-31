@@ -2,11 +2,6 @@ import * as React from "react"
 import { Share2, Twitter } from "react-feather"
 import { css } from "@emotion/core"
 
-export type ShareData = {
-  url: string
-  text?: string | null
-}
-
 type Navigator = {
   share?: (data?: ShareData) => Promise<void>
 }

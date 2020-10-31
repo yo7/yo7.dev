@@ -9,14 +9,22 @@ import {
   readArticleFile,
 } from "../../lib/content-loader"
 import "prismjs/themes/prism.css"
+import { Header } from "../../components/articles/Header"
 
 type Props = {
+  slug: string
   article: Article
 }
 
 const ArticlePage: NextPage<Props> = (props) => {
   return (
     <div>
+      <Header
+        shareData={{
+          text: props.article.title,
+          url: `https://yo7.dev/articles/${props.slug}`,
+        }}
+      />
       <Eyecatch
         title={props.article.title}
         src={`/images/articles/${props.article.img}`}
@@ -96,7 +104,7 @@ export const getStaticPaths = () => {
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const slug = ctx.params?.slug as string
   const article = await readArticleFile(slug)
-  return { props: { article } }
+  return { props: { slug, article } }
 }
 
 export default ArticlePage
