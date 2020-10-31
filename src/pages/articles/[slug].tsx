@@ -1,8 +1,9 @@
+import path from "path"
 import { css } from "@emotion/core"
-import { GetStaticProps, NextPage } from "next"
+import { GetStaticPaths, NextPage } from "next"
 import { Edit } from "react-feather"
 import { Eyecatch } from "../../components/articles/Eyecatch"
-import { Article } from "../../lib/content"
+import { Article, getArticleFiles } from "../../lib/content-loader"
 
 type Props = {
   article: Article
@@ -74,8 +75,13 @@ const ArticlePage: NextPage<Props> = (props) => {
 }
 
 export const getStaticPaths = () => {
+  const files = getArticleFiles()
+  const paths = files.map((fileName) => ({
+    params: { slug: path.parse(fileName).name },
+  }))
+
   return {
-    paths: [{ params: { slug: "web-share" } }],
+    paths,
     fallback: false,
   }
 }
