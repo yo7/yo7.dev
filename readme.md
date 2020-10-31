@@ -1,7 +1,5 @@
-# Gatsby Boilerplate
+# yo7.dev
 
-- TypeScript
-- emotion
 
 # Develop
 

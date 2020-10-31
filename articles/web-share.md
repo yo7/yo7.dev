@@ -1,8 +1,7 @@
 ---
-path: "/articles/web-share"
 date: "2020-03-10"
-title: "Web Share APIでシェア体験を向上する"
-img: "./images/share.png"
+title: Web Share APIでシェア体験を向上する
+img: share.png
 ---
 
 もっと使われてもいいAPIだと思うのですが、意外と知られていない気がするWeb Share APIについて書きます。

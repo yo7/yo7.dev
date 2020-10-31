@@ -2,16 +2,14 @@ import * as React from "react"
 import { Share2, Twitter } from "react-feather"
 import { css } from "@emotion/core"
 
-export type ShareData = {
-  url: string
-  text?: string | null
-}
-
 type Navigator = {
   share?: (data?: ShareData) => Promise<void>
 }
 
-type Props = ShareData
+type Props = {
+  url: string
+  text: string
+}
 
 export const ShareLink: React.FC<Props> = (props) => {
   if (typeof navigator === "undefined") {

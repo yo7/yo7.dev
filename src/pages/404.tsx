@@ -1,35 +1,30 @@
 import * as React from "react"
 
-import SEO from "../components/SEO"
-import { Global, css } from "@emotion/core"
-import { globalStyles } from "../styles/global"
-import { Link } from "gatsby"
+import Link from "next/link"
+import { css } from "@emotion/core"
 import { ArrowLeft } from "react-feather"
 
-export default () => (
-  <>
-    <Global styles={globalStyles} />
-    <SEO title="Not found" />
+const NotFoundPage = () => (
+  <div
+    css={css`
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    `}
+  >
     <div
       css={css`
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        font-size: 7rem;
+        font-family: Roboto;
       `}
     >
-      <div
-        css={css`
-          font-size: 7rem;
-          font-family: Roboto;
-        `}
-      >
-        404
-      </div>
-      <Link
-        to="/"
+      404
+    </div>
+    <Link href="/" passHref>
+      <a
         css={css`
           font-size: 1.6rem;
           color: #999;
@@ -47,7 +42,9 @@ export default () => (
           `}
         />
         <span>Back</span>
-      </Link>
-    </div>
-  </>
+      </a>
+    </Link>
+  </div>
 )
+
+export default NotFoundPage

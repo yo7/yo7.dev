@@ -1,8 +1,7 @@
 ---
-path: "/articles/redux-async-hook"
 date: "2020-02-11"
-title: "Reduxの非同期処理にReact Hooksを使う"
-img: "./images/redux-async-hook.png"
+title: Reduxの非同期処理にReact Hooksを使う
+img: redux-async-hook.png
 ---
 
 最近React / Reduxのアプリで、React Hooksを使って非同期処理を書いていて、シンプルでしっくりきているのでそれについて書こうと思います。
