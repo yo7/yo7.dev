@@ -8,7 +8,7 @@ export default class CustomDocument extends Document {
         <Head>
           <meta property="og:type" content="website" />
           <meta
-            property="description"
+            name="description"
             content="Personal website on web development"
           />
           <meta
