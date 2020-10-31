@@ -4,7 +4,10 @@ import { ArrowLeft } from "react-feather"
 import { ShareLink } from "./ShareLink"
 
 type Props = {
-  shareData: ShareData
+  shareData: {
+    text: string
+    url: string
+  }
 }
 
 export const Header: React.FC<Props> = (props) => {
