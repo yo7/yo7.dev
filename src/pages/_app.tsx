@@ -1,3 +1,4 @@
+import React from "react"
 import { Global } from "@emotion/core"
 import { AppProps } from "next/app"
 import Head from "next/head"
