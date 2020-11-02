@@ -2,7 +2,7 @@
   "name": "yo7.dev",
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.1.0",
-    "@emotion/core": "^10.1.0",
+    "@emotion/core": "^10.1.1",
     "gray-matter": "^4.0.2",
     "next": "^10.0.0",
     "pkg-dir": "^5.0.0",
