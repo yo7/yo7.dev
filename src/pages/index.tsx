@@ -1,4 +1,4 @@
-import css from "@emotion/css"
+import { css } from "linaria"
 import { GetStaticProps, NextPage } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -11,20 +11,20 @@ type Props = {
 const IndexPage: NextPage<Props> = (props) => {
   return (
     <div
-      css={css`
+      className={css`
         max-width: 640px;
         margin: 0 auto;
       `}
     >
       <div
-        css={css`
+        className={css`
           margin-top: 2rem;
           padding: 0.5rem 1.5rem;
         `}
       >
         <div>
           <h1
-            css={css`
+            className={css`
               font-family: Roboto;
               font-size: 1.3rem;
               margin: 0;
@@ -37,12 +37,12 @@ const IndexPage: NextPage<Props> = (props) => {
         </div>
       </div>
       <div
-        css={css`
+        className={css`
           margin-top: 3rem;
         `}
       >
         <h2
-          css={css`
+          className={css`
             font-size: 1.8rem;
             padding: 0 1.5rem;
             margin: 1rem 0 0.5rem;
@@ -51,7 +51,7 @@ const IndexPage: NextPage<Props> = (props) => {
           Articles
         </h2>
         <div
-          css={css`
+          className={css`
             display: flex;
             flex-direction: column;
 
@@ -64,7 +64,7 @@ const IndexPage: NextPage<Props> = (props) => {
           {props.articles.map((article, i) => (
             <div
               key={i}
-              css={css`
+              className={css`
                 @media (min-width: 640px) {
                   max-width: 50%;
                 }
@@ -84,7 +84,7 @@ const ArticleLink: React.FC<{ article: Article }> = (props) => {
     <Link href={`/articles/${props.article.slug}`} passHref>
       <a>
         <div
-          css={css`
+          className={css`
             padding: 1.5rem;
           `}
         >
@@ -92,17 +92,17 @@ const ArticleLink: React.FC<{ article: Article }> = (props) => {
             src={`/images/articles/${props.article.img}`}
             width={640}
             height={335}
-            css={css`
+            className={css`
               border-radius: 3px;
             `}
           />
           <div
-            css={css`
+            className={css`
               margin-top: 0.5rem;
             `}
           >
             <span
-              css={css`
+              className={css`
                 font-size: 14px;
                 color: #999;
               `}
@@ -110,7 +110,7 @@ const ArticleLink: React.FC<{ article: Article }> = (props) => {
               {props.article.date}
             </span>
             <div
-              css={css`
+              className={css`
                 margin-top: 0.2rem;
                 font-size: 1.2rem;
                 font-weight: 600;

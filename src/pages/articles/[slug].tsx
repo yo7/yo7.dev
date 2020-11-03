@@ -1,5 +1,5 @@
 import path from "path"
-import { css } from "@emotion/core"
+import { css } from "linaria"
 import { GetStaticProps, NextPage } from "next"
 import { Edit } from "react-feather"
 import { Eyecatch } from "../../components/articles/Eyecatch"
@@ -30,14 +30,14 @@ const ArticlePage: NextPage<Props> = (props) => {
         src={`/images/articles/${props.article.img}`}
       />
       <div
-        css={css`
+        className={css`
           max-width: 680px;
           margin: 0 auto;
           padding: 0.5rem 1.5rem;
         `}
       >
         <div
-          css={css`
+          className={css`
             color: #999;
             display: flex;
             justify-content: flex-end;
@@ -48,7 +48,7 @@ const ArticlePage: NextPage<Props> = (props) => {
           <Edit
             color="#999"
             size={20}
-            css={css`
+            className={css`
               margin-right: 5px;
             `}
           />
@@ -56,7 +56,7 @@ const ArticlePage: NextPage<Props> = (props) => {
         </div>
         <div
           dangerouslySetInnerHTML={{ __html: props.article.content }}
-          css={css`
+          className={css`
             a {
               color: #411bd6;
             }
