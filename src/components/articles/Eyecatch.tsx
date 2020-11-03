@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { css } from "@emotion/core"
+import { css } from "linaria"
 
 type Props = {
   title: string
@@ -9,18 +9,18 @@ type Props = {
 export const Eyecatch: React.FC<Props> = (props) => {
   return (
     <div
-      css={css`
+      className={css`
         position: relative;
         background-color: #999;
       `}
     >
       <div
-        css={css`
+        className={css`
           max-height: 250px;
         `}
       >
         <div
-          css={css`
+          className={css`
             padding-bottom: 52.5%;
           `}
         >
@@ -28,7 +28,7 @@ export const Eyecatch: React.FC<Props> = (props) => {
             src={props.src}
             alt={props.title}
             unsized
-            css={css`
+            className={css`
               position: absolute;
               width: 100%;
               max-height: 250px;
@@ -42,7 +42,7 @@ export const Eyecatch: React.FC<Props> = (props) => {
         </div>
       </div>
       <div
-        css={css`
+        className={css`
           position: absolute;
           bottom: 0;
           left: 0;
@@ -52,7 +52,7 @@ export const Eyecatch: React.FC<Props> = (props) => {
         `}
       >
         <h1
-          css={css`
+          className={css`
             color: #fff;
             margin: 1rem;
             line-height: 1.25;

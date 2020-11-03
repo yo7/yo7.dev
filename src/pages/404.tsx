@@ -1,12 +1,12 @@
 import * as React from "react"
 
 import Link from "next/link"
-import { css } from "@emotion/core"
+import { css } from "linaria"
 import { ArrowLeft } from "react-feather"
 
 const NotFoundPage = () => (
   <div
-    css={css`
+    className={css`
       height: 100vh;
       width: 100vw;
       display: flex;
@@ -16,7 +16,7 @@ const NotFoundPage = () => (
     `}
   >
     <div
-      css={css`
+      className={css`
         font-size: 7rem;
         font-family: Roboto;
       `}
@@ -25,7 +25,7 @@ const NotFoundPage = () => (
     </div>
     <Link href="/" passHref>
       <a
-        css={css`
+        className={css`
           font-size: 1.6rem;
           color: #999;
           display: flex;
@@ -37,7 +37,7 @@ const NotFoundPage = () => (
         <ArrowLeft
           color="#999"
           size={25}
-          css={css`
+          className={css`
             margin-right: 0.5rem;
           `}
         />

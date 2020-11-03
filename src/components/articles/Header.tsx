@@ -1,4 +1,4 @@
-import { css } from "@emotion/core"
+import { css } from "linaria"
 import Link from "next/link"
 import { ArrowLeft } from "react-feather"
 import { ShareLink } from "./ShareLink"
@@ -13,7 +13,7 @@ type Props = {
 export const Header: React.FC<Props> = (props) => {
   return (
     <div
-      css={css`
+      className={css`
         position: absolute;
         top: 0;
         left: 0;
@@ -22,7 +22,7 @@ export const Header: React.FC<Props> = (props) => {
       `}
     >
       <div
-        css={css`
+        className={css`
           padding: 1rem 0.8rem;
           display: flex;
           justify-content: space-between;

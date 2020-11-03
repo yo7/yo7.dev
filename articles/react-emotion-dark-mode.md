@@ -44,7 +44,7 @@ import css from "@emotion/css"
 export const ThemeView: React.FC = () => {
   return (
     <div
-      css={css`
+      className={css`
         ${baseStyle};
 
         background-color: #fefefe;
@@ -72,7 +72,7 @@ export const ThemeView: React.FC = () => {
   return (
     <ThemeProvider theme={lightTheme}>
       <div
-        css={theme => css`
+        className={theme => css`
           ${baseStyle};
 
           background-color: ${theme.bgColor};
@@ -130,7 +130,7 @@ export const ThemeView: React.FC = () => {
   return (
     <ThemeProvider theme={isDarkMode() ? darkTheme : lightTheme}>
       <div
-        css={theme => css`
+        className={theme => css`
           ${baseStyle};
 
           background-color: ${theme.bgColor};

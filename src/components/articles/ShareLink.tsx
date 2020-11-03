@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Share2, Twitter } from "react-feather"
-import { css } from "@emotion/core"
+import { css } from "linaria"
 
 type Navigator = {
   share?: (data?: ShareData) => Promise<void>
@@ -36,7 +36,7 @@ const WebShareLink: React.FC<Props> = (props) => {
   return (
     <div
       onClick={handleClick}
-      css={css`
+      className={css`
         &:hover {
           cursor: pointer;
         }
