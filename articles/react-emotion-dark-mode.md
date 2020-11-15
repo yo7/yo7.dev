@@ -215,6 +215,4 @@ const { mode, toggleTheme } = useTheme()
 - [Building Dark Mode on Desktop - Several People Are Coding](https://slack.engineering/building-dark-mode-on-desktop-811508b5d15f)
 - [Hello darkness, my old friend | web.dev](https://web.dev/prefers-color-scheme)
 
----
-
-*Photo by Ezekiel Elin on [Unsplash](https://unsplash.com/photos/LNG1mPyJ8rg)*
+_Photo by Ezekiel Elin on [Unsplash](https://unsplash.com/photos/LNG1mPyJ8rg)_
