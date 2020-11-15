@@ -24,10 +24,12 @@ const ArticlePage: NextPage<Props> = (props) => {
         <title>{props.article.title}</title>
         <meta property="og:type" content="article" />
         <meta property="og:title" content={props.article.title} />
+        <meta property="og:description" content={props.article.description} />
         <meta
           property="og:image"
           content={`https://yo7.dev/images/articles/${props.article.img}`}
         />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div>
         <Header

@@ -11,6 +11,7 @@ export type Article = {
   slug: string
   date: Date
   title: string
+  description?: string
   content: string
   img: string
 }
@@ -44,12 +45,16 @@ export const readArticleFile = async (slug: string): Promise<Article> => {
   const fileContent = fs.readFileSync(path.join(articlesDir(), `${slug}${EXT}`))
   const matterParsed = matter(fileContent)
   const { date, title, img } = matterParsed.data
+  const description = matterParsed.content
+    .split("\n")
+    ?.find((text) => text !== "")
   const content = await markdownToHtml(matterParsed.content)
 
   return {
     slug,
     date,
     title,
+    description,
     content,
     img,
   }
