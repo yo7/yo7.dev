@@ -26,7 +26,7 @@ const ArticlePage: NextPage<Props> = (props) => {
         <meta property="og:title" content={props.article.title} />
         <meta
           property="og:image"
-          content={`https://yo7.dev/${props.article.img}`}
+          content={`https://yo7.dev/images/articles/${props.article.img}`}
         />
       </Head>
       <div>
