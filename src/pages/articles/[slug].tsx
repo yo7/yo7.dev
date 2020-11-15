@@ -62,12 +62,23 @@ const ArticlePage: NextPage<Props> = (props) => {
             }
 
             p {
-              line-height: 1.55;
+              line-height: 1.65;
+            }
+
+            p > code {
+              background-color: #f5f2f0;
+              padding: 2.5px 5px;
+              border-radius: 5px;
+              margin: 0 2px;
+              font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+                monospace;
+              font-size: 0.9em;
+              color: #333;
             }
 
             pre > code,
             li > code {
-              padding: 0.25rem 0.4rem 0.15rem;
+              // padding: 0.25rem 0.4rem 0.15rem;
               border-radius: 3px;
             }
 
