@@ -1,6 +1,6 @@
 ---
 date: "2020-11-15"
-title: "GaugeとTaikoではじめるE2E"
+title: "GaugeとTaikoではじめるE2Eテスト"
 img: gauge-taiko-e2e.jpg
 ---
 
