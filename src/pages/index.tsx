@@ -85,7 +85,7 @@ const ArticleLink: React.FC<{ article: Article }> = (props) => {
       <a>
         <div
           className={css`
-            padding: 1.5rem;
+            padding: 1rem 1.5rem;
           `}
         >
           <Image

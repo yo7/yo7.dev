@@ -9,7 +9,7 @@ import prism from "remark-prism"
 
 export type Article = {
   slug: string
-  date: string
+  date: Date
   title: string
   content: string
   img: string
@@ -35,7 +35,9 @@ export const readArticleFiles = async () => {
     .map((fileName) => path.parse(fileName).name)
     .map((name) => readArticleFile(name))
   const articles = await Promise.all(promises)
-  return articles
+  return articles.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
 }
 
 export const readArticleFile = async (slug: string): Promise<Article> => {
