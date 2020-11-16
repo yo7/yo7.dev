@@ -8,11 +8,12 @@ img: gauge-taiko-e2e.jpg
 
 ## Gaugeについて
 
-[Gauge](https://gauge.org/)はThoughtworksが開発しているE2E / 受け入れテストのためのツールです。
+[Gauge](https://gauge.org/)はThoughtworks社が開発しているOSSのE2E / 受け入れテストのためのツールです。
 
 テストのシナリオとテストコードが別ファイルに分離されるので、シナリオは自然言語で人間にとって読みやすく理解しやすいものにできるという特徴があります。
 
 シナリオは`login.spec`というファイルに以下のようにマークダウンで書いて、
+
 
 ```md
 ## ログインできる
@@ -33,7 +34,7 @@ step("ログインボタンを押す", async () => {
 })
 ```
 
-シナリオとステップ実装の分離という点ではGherkin / Cucumberに近いですが、GaugeのシナリオはGherkinのようなDSL（`Given` `When` etc）ではなくマークダウンで書くので、より自由度が高いです。
+シナリオとステップ実装の分離という点ではGherkin / Cucumberに近いですが、GaugeのシナリオはGherkinのようなDSL（`Given` `When` etc.）ではなくマークダウンで書くので、より自由度が高いです。
 
 テストコードの実装はJS、Java、Go、Rubyなど色々なプログラミング言語で書くことができ、Webアプリに対するテストを書く際に使うブラウザ自動化ツールも後述するTaikoをはじめSeleniumなど好きなものと組み合わせることができます。
 
@@ -42,17 +43,17 @@ step("ログインボタンを押す", async () => {
 
 [Taiko](https://taiko.dev/)はGaugeのチームが開発しているnode.jsのブラウザ自動化ツールです。  
 
-Gauge公式で推奨されていて、[Gaugeのトップページ](https://gauge.org/)にも`Gauge + [Taiko] = Reliable browser automation for your JavaScript tests!`という一文があります。
+Gauge公式で推奨されていて、[Gaugeのトップページ](https://gauge.org/)にも`Gauge + Taiko = Reliable browser automation for your JavaScript tests!`という一文があります。
 
-Node.jsならブラウザ自動化ツールとして使えるライブラリとして[Puppeteer](https://github.com/puppeteer/puppeteer)がありますが、Puppeteerはより汎用的で色々な目的に使われるのに大して、Taikoはテストに特化していてよりハイレベルなAPIになっています。
+Node.jsならブラウザ自動化ツールとして使えるライブラリとして[Puppeteer](https://github.com/puppeteer/puppeteer)がありますが、Puppeteerはより汎用的で色々な目的に使われるのに対して、Taikoはテストに特化していてよりハイレベルなAPIになっています。
 
 他のツールと比較してすぐれたTaikoの機能としては、[Smart Selectors](https://github.com/getgauge/taiko#smart-selectors)というものがあります。
 
-これは、たとえば`click("ログイン")`というAPIで「ログイン」というテキストがある要素を探索してクリックしたり、`text("タイトル")`でタイトルというテキストノードをもつ要素を取得できるなど、テストコード側ではシンプルな記述でページ内のアクションや要素の探索をできる機能です。この機能のおかげテストのためにIDをつける、みたいなことを減らせます。（なぜIDを使うのがアンチパターンなのかは[なぜE2Eテストでidを使うべきではないのか](https://blog.autify.com/ja/why-id-should-not-be-used)に詳しいです）
+これは、たとえば`click("ログイン")`というAPIで「ログイン」というテキストがある要素を探索してクリックしたり、`text("タイトル")`でタイトルというテキストノードをもつ要素を取得できるなど、テストコード側ではシンプルな記述でページ内のアクションや要素の探索をできる機能です。この機能のおかげテストのためにIDをつける、みたいなことを減らせます（なぜIDを使うのがアンチパターンなのかは、[なぜE2Eテストでidを使うべきではないのか](https://blog.autify.com/ja/why-id-should-not-be-used)に詳しいです）。
 
 その他にも`Implicit waits`といってSPAなどで動的な要素が表示されるのを明示的にテストコードに書かなくても待ってくれるなど、ユーザーの操作に近いシンプルなテストコードが書けるようにライブラリ側でよしなにしてくれるという設計思想を感じます。
 
-逆にTaikoを他のツールと比較した際の欠点としては、Node.jsのツールなのでたとえばSeleniumのように他の言語では書けない、[Chrome Devtool Protocol](https://chromedevtools.github.io/devtools-protocol/)を使っているのでChromiumベースのブラウザでしか動かずそれ以外のクロスブラウザテストはできないなどがあります。他ツールとの比較は[How Taiko compares to other browser automation tools](https://gauge.org/2019/08/21/how-taiko-compares-to-other-browser-automation-tools/)に詳しいです（GaugeのブログなのでTaikoに対して贔屓目かもしれないですが）。
+逆にTaikoを他のツールと比較した際の欠点としては、Node.jsのツールなのでたとえばSeleniumのように他の言語では書けない、[Chrome Devtool Protocol](https://chromedevtools.github.io/devtools-protocol/)を使っているのでChromiumベースのブラウザでしか動かずそれ以外のクロスブラウザテストはできない、などがあります。他ツールとの比較は[How Taiko compares to other browser automation tools](https://gauge.org/2019/08/21/how-taiko-compares-to-other-browser-automation-tools/)に詳しいです（GaugeのブログなのでTaikoに対して贔屓目かもしれないですが）。
 
 今回はGaugeとTaikoを使ったプロジェクトを作成して、TypeScriptを使うなどいろいろ試してみます。
 
@@ -63,17 +64,17 @@ macなら`$ brew install gauge`など、[公式のGetting Started](https://githu
 
 まずは次のコマンドで[gauge-js](https://github.com/getgauge/gauge-js)プラグインをインストールします。インストールしたプラグインは`$ gauge -v`で確認できます。
 
-```
+```sh
 $ gauge install js
 ```
 
 適当な空のディレクトリをつくり、次のコマンドでTaikoを使ったgaugeのサンプルプロジェクトが作成されます。
 
-```
+```sh
 $ gauge init js
 ```
 
-サンプルプロジェクトを開くと、`specs/example.spec`にサンプルのシナリオがあります。Githubのページを開き、「Taiko」でプロジェクトを検索すると`getgauge/taiko`というテキストがある、というシナリオになっています。`tests/step_implementation.js`にステップの実装があります。
+サンプルプロジェクトを開くと、`specs/example.spec`にサンプルのシナリオがあります。「Githubのページを開き、"Taiko"でプロジェクトを検索すると`getgauge/taiko`というテキストがある」というシナリオになっています。`tests/step_implementation.js`にステップの実装があります。
 
 ```md
 ## Search Taiko Repository
@@ -205,7 +206,7 @@ export default class ExampleSpec {
 
 gauge-jsとはずいぶん書き味が違うので、すでにgauge-jsを使っているプロジェクトが移行しようとすると大変そうです。個人的にはステップに対応した関数を無名関数で書けるなど、gauge-jsのAPIの方が好みです。
 
-ちなみにgauge-tsはデコレータを前提としたライブラリですが、[デコレータはTC 39でStage 2](https://github.com/tc39/proposal-decorators)の機能であり、今後仕様が大きく変化するなどの可能性がある点については留意が必要です（とはいえ広く使われているTypeScriptのプロジェクトでデコレーター全体のものも多くあるのが現状ですが）
+ちなみにgauge-tsはデコレータを前提としたライブラリですが、[デコレータはTC 39でStage 2](https://github.com/tc39/proposal-decorators)の機能であり、今後仕様が大きく変化するなどの可能性がある点については留意が必要です（とはいえ広く使われているTypeScriptのプロジェクトでデコレーター全体のものも多くあるのが現状ですが）。
 
 
 ## Jestのようにアサーションを書けるようにしてみる
