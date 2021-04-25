@@ -2,7 +2,7 @@
   "name": "yo7.dev",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
-    "gray-matter": "^4.0.2",
+    "gray-matter": "^4.0.3",
     "linaria": "^2.1.0",
     "next": "^10.0.1",
     "pkg-dir": "^5.0.0",
